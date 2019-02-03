@@ -4,16 +4,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To Do List</title>
-    <link rel="Stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form>
-        <input type="text" /><button>Dodaj</button>
-    </form>
-    <h1>Ilość zadań do wykonania: <span>0</span></h1>
-    <h2>Zadania wykonane: <span>0</span></h2>
-    <ul class="taskList">
-    </ul>
+    <div class="wrapper">
+        <div class="header">
+            <h2>My To Do List</h2>
+            <input type="text" placeholder="Co robimy?">
+            <span class="addBtn">Dodaj</span>
+        </div>
+        <div class="counters">
+            <div class="counter float">Ilość zadań do wykonania: <span>0</span></div>
+            <div class="counter float">Zadania wykonane: <span>0</span></div>
+        </div>
+        <ul class="taskList">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    
     <script src="main.js"></script>
 </body> 
 </html>
