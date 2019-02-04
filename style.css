@@ -6,7 +6,8 @@
 
 .wrapper{
     margin: 0 auto;
-    width: 1024px;
+    width: 100%;
+    max-width: 1024px;
 }
 
 .header {
@@ -45,7 +46,7 @@ input {
   }
   
   .addBtn:hover {
-    background-color: #bbb;
+    background-color: greenyellow;
   }
   
   .counter{
@@ -65,17 +66,17 @@ input {
       padding: 0;
   }
   ul li {
+    width: 100%;
     cursor: pointer;
     position: relative;
-    padding: 12px 0 12px 40px;
+    /* padding: 12px 0 12px 40px; */
     list-style-type: none;
     background: rgb(28, 166, 230);
     font-size: 18px;
     color: #fff;
-    transition: 0.2s;
     display: flex;
-    justify-items: center;
     justify-content: space-between;
+    align-items: center;
     
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -91,30 +92,39 @@ input {
     background: rgb(113, 210, 240);
   }
 
-  ul li::before {
-    content: '';
+.taskText{
+    padding: 0 10px;
+}
+
+.done{
     position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-    opacity: 0;
-  }
+    height: 40px;
+    width: 40px;
+    right: 40px;
+    background: greenyellow;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.done:hover{
+    opacity: 1;
+}
 
   .close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 12px 16px 12px 16px;
+    position: relative;
+    background-color: #f44336;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
   }
   
   .close:hover {
-    background-color: #f44336;
-    color: white;
+    opacity: 1;
   }
 
   /* .tooltip {
