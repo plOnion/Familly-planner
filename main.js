@@ -6,8 +6,7 @@ const counterDone = document.querySelector("[data-name='done']");
 
 let toDoNumber = 0;
 
-const addTask = (e) =>{
-e.preventDefault;
+const addTask = () =>{
 
 if (input.value ==="") return;
 
@@ -18,4 +17,17 @@ taskList.appendChild(task);
 input.value = "";
 }
 
-addBtn.addEventListener("click", addTask);
+const btnAdd = (e) => {
+    e.preventDefault;
+    addTask();
+}
+
+const enterAdd = (e) =>{
+    if (e.keyCode === 13){
+        addTask();
+    }
+}
+
+input.addEventListener("keydown", enterAdd);
+
+addBtn.addEventListener("click", btnAdd);
