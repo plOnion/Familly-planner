@@ -29,13 +29,17 @@ const doneTask = (i) =>{
     }
 }
 
-const removeTask = (i) =>{
-if (close[i].parentNode.dataset.flag === "false"){
+const removeTask = (li) =>{
+if (li.dataset.flag === "false"){
     toDoNumber--;
     counterToDo.textContent = `Zadania do wykonania: ${toDoNumber}`;
-    taskToDo.splice([i], 1)
+    taskToDo.splice([li.dataset.key], 1)
     renderList();
-    close = document.getElementsByClassName("close");
+} else {
+    doneNumber--;
+    counterDone.textContent = `Zadania wykonane: ${doneNumber}`;
+    taskToDo.splice([li.dataset.key], 1)
+    renderList();
 }
 }
 
@@ -53,8 +57,9 @@ const addTask = () =>{
     
     close = document.getElementsByClassName("close");
     for (let i = 0; i < close.length; i++) {
-        close[i].onclick = () => {
-        removeTask(done[i].parentNode.dataset.key);
+        close[i].onclick = (e) => {
+        let li = e.target.parentNode.parentNode;
+        removeTask(li);
         }
     }
 
