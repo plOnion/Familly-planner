@@ -5,6 +5,7 @@ const counterToDo = document.querySelector("[data-name='todo']");
 const counterDone = document.querySelector("[data-name='done']");
 let done;
 let close;
+let i = 0;
 
 let toDoNumber = 0;
 let doneNumber = 0;
@@ -29,6 +30,7 @@ const doneTask = (li) =>{
 }
 
 const removeTask = (li) =>{
+    localStorage.removeItem([li.dataset.key]);
 if (li.dataset.flag === "false"){
     toDoNumber--;
     counterToDo.textContent = `Zadania do wykonania: ${toDoNumber}`;
@@ -50,9 +52,11 @@ const addTask = () =>{
     const task = document.createElement("li");
     task.innerHTML = `<span class="taskText">${input.value}</span> <span class="doneBtn"><i class="icon-ok"></i></span><span class="close tooltip"><i class="icon-cancel"></i></span>`;
     taskList.appendChild(task);
-    input.value = "";
+
     taskToDo = [...document.querySelectorAll("li")];
+    localStorage.setItem(taskToDo.length-1, input.value);
     renderList();
+    input.value = "";
     
     close = document.getElementsByClassName("close");
     for (let i = 0; i < close.length; i++) {
@@ -71,25 +75,30 @@ const addTask = () =>{
     }
 }
 
-const btnAdd = (e => {
+const btnAdd = (e) => {
     e.preventDefault;
     addTask();
-})
+};
 
 const enterAdd = (e) =>{
     if (e.keyCode === 13){
         addTask();
     }
-}
+};
 
 const renderList = () => {
     taskList.textContent = "";
     taskToDo.forEach((toDoElement, key) => {
-     toDoElement.dataset.key = key;
-     toDoElement.dataset.flag = false;
-     taskList.appendChild(toDoElement);
+        toDoElement.dataset.key = key;
+        toDoElement.dataset.flag = false;
+        let taskText = toDoElement.firstChild;
+        taskText.innerText = localStorage.getItem( key );
+        taskList.appendChild(toDoElement);
     })
    }
 
+
+
 input.addEventListener("keydown", enterAdd);
 addBtn.addEventListener("click", btnAdd);
+
