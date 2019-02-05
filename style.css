@@ -96,7 +96,7 @@ input {
     padding: 0 10px;
 }
 
-.done{
+.doneBtn{
     position: absolute;
     height: 40px;
     width: 40px;
@@ -108,11 +108,15 @@ input {
     align-items: center;
 }
 
-.done:hover{
+.doneBtn:hover{
     opacity: 1;
 }
 
-  .close {
+.done{
+    text-decoration: line-through;
+}
+
+.close {
     position: relative;
     background-color: #f44336;
     width: 40px;
