@@ -5,27 +5,26 @@ const counterToDo = document.querySelector("[data-name='todo']");
 const counterDone = document.querySelector("[data-name='done']");
 let done;
 let close;
-// let flag = false;
 
 let toDoNumber = 0;
 let doneNumber = 0;
 let taskToDo = [...document.querySelectorAll("li")];
 
-const doneTask = (i) =>{
-    if (done[i].parentNode.dataset.flag === "false"){
+const doneTask = (li) =>{
+    if (li.dataset.flag === "false"){
     doneNumber++;
     toDoNumber--;
-    done[i].parentNode.dataset.flag = "true";
+    li.dataset.flag = "true";
     counterToDo.textContent = `Zadania do wykonania: ${toDoNumber}`;
     counterDone.textContent = `Zadania wykonane: ${doneNumber}`;
-    done[i].parentNode.classList.add("done");
+    li.classList.add("done");
     } else {
     doneNumber--;
     toDoNumber++;
-    done[i].parentNode.dataset.flag = "false";
+    li.dataset.flag = "false";
     counterToDo.textContent = `Zadania do wykonania: ${toDoNumber}`;
     counterDone.textContent = `Zadania wykonane: ${doneNumber}`;
-    done[i].parentNode.classList.remove("done");
+    li.classList.remove("done");
     }
 }
 
@@ -65,8 +64,9 @@ const addTask = () =>{
 
     done = document.getElementsByClassName("doneBtn");
     for (let i = 0; i < done.length; i++) {
-        done[i].onclick = () => {
-        doneTask(i);
+        done[i].onclick = (e) => {
+        let li = e.target.parentNode.parentNode;
+        doneTask(li);
         }
     }
 }
@@ -93,7 +93,3 @@ const renderList = () => {
 
 input.addEventListener("keydown", enterAdd);
 addBtn.addEventListener("click", btnAdd);
-
-// taskToDo.forEach(e =>{
-//     console.log("dziala");
-// })
